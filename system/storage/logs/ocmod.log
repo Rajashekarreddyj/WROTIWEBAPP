@@ -1,0 +1,83 @@
+2022-05-25 10:26:23 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 69
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 77
+LINE: 151
+LINE: 168
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 59
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 67
+LINE: 73
+
+FILE: system/library/template/template.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/twig.php
+CODE: $loader = new \Twig_Loader_Filesystem(DIR_TEMPLATE);
+LINE: 19
+----------------------------------------------------------------
+MOD: Add Mutliple Products to Cart
+
+FILE: catalog/controller/product/category.php
+CODE: $data['compare'] = $this->url->link('product/compare');
+LINE: 140
+CODE: $data['products'][] = array(
+LINE: 298
+CODE: 'product_id'  => $result['product_id'],
+LINE: 312
+
+FILE: catalog/controller/product/search.php
+CODE: $data['compare'] = $this->url->link('product/compare');
+LINE: 160
+CODE: $data['products'][] = array(
+LINE: 326
+CODE: 'product_id'  => $result['product_id'],
+LINE: 340
+
+FILE: catalog/controller/checkout/cart.php
+CODE: public function add() {
+LINE: 402
+
+FILE: catalog/language/en-gb/product/category.php
+CODE: $_['text_limit']        = 'Show:';
+LINE: 44
+
+FILE: catalog/language/en-gb/product/search.php
+CODE: $_['text_limit']        = 'Show:';
+LINE: 50
+
+FILE: catalog/language/en-gb/checkout/cart.php
+CODE: // Text
+LINE: 10
+
+FILE: catalog/view/theme/default/template/product/category.twig
+CODE: {% for product in products %}
+LINE: 130
+CODE: <div class="button-group">
+LINE: 149
+CODE: {{ footer }}
+LINE: 544
+
+FILE: catalog/view/theme/default/template/product/search.twig
+CODE: {% for product in products %}
+LINE: 115
+CODE: <div class="button-group">
+LINE: 147
+CODE: {{ footer }}
+LINE: 586
+CODE: {% endfor %} </div>
+LINE: 328
+CODE: <div class="row">
+LINE: 328
+----------------------------------------------------------------

@@ -1,0 +1,265 @@
+# 1.To use URL Alias you need to be running apache with mod_rewrite enabled. 
+
+# 2. In your opencart directory rename htaccess.txt to .htaccess.
+
+# For any support issues please visit: http://www.opencart.com
+
+# For security reasons, Option followsymlinks cannot be overridden.
+#Options +FollowSymlinks
+Options +SymLinksIfOwnerMatch
+
+# Prevent Directoy listing 
+Options -Indexes
+
+# Prevent Direct Access to files
+<FilesMatch "(?i)((\.tpl|\.ini|\.log|(?<!robots)\.txt))">
+ Order deny,allow
+ Deny from all
+</FilesMatch>
+
+# SEO URL Settings
+RewriteEngine On
+# If your opencart installation does not run on the main web folder make sure you folder it does run in ie. / becomes /shop/ 
+
+RewriteBase /
+
+
+RewriteRule ^/?([0-9]+)/deletecategory/key/?([0-9]+) index.php?route=extension/feed/rest_api/deletecategory&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/addcategory/key/?([0-9]+) index.php?route=extension/feed/rest_api/addcategory&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/updatecategory/key/?([0-9]+) index.php?route=extension/feed/rest_api/updatecategory&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/updateTableData/key/?([0-9]+) index.php?route=extension/feed/rest_api/updateTableData&key=$2&store_id=$1  [L]
+
+
+RewriteRule ^/?([0-9]+)/getstoretimings/key/?([0-9]+) index.php?route=extension/feed/rest_api/getStoreTimings&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/updatedStoreTimings/key/?([0-9]+) index.php?route=extension/feed/rest_api/updatedStoreTimings&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getCustomerInGroups/key/?([0-9]+) index.php?route=extension/feed/rest_api/getCustomerInGroups&key=$2&store_id=$1  [L]
+
+
+RewriteRule ^/?([0-9]+)/updateCustomerToCustomerGroup/key/?([0-9]+) index.php?route=extension/feed/rest_api/updateCustomerToCustomerGroup&key=$2&store_id=$1  [L]
+
+
+RewriteRule ^/?([0-9]+)/getSupportedPayments/key/?([0-9]+) index.php?route=extension/feed/rest_api/getSupportedPayments&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getorderstats/key/?([0-9]+) index.php?route=extension/feed/rest_api/getOrderStats&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/unsubscribe/key/?([0-9]+) index.php?route=extension/feed/rest_api/unsubscribe&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/orders/key/?([0-9]+) index.php?route=extension/feed/rest_api/orders&key=$2&store_id=$1
+
+
+RewriteRule ^/?([0-9]+)/updateproducts/key/?([0-9]+) index.php?route=extension/feed/rest_api/updateProducts&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/uploadoptionimage/key/?([0-9]+) index.php?route=extension/feed/rest_api/uploadoptionimage&key=$2&store_id=$1  [L]
+
+RewriteRule ^/brands/key/?([0-9]+) index.php?route=extension/feed/rest_api/getBrands&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/products/key/?([0-9]+) index.php?route=extension/feed/rest_api/products&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/products/category/?([0-9]+)/?([0-9]+)/?([0-9]+)/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/products&category=$2&key=$5&language_id=$3&status=$4&store_id=$1&limit=$6&offset=$7  [L]
+
+RewriteRule ^/?([0-9]+)/getAllproducts/category/?([0-9]+)/?([0-9]+)/?([0-9]+)/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/getAllproducts&category=$2&key=$5&language_id=$3&status=$4&store_id=$1&limit=$6&offset=$7  [L]
+
+
+
+
+RewriteRule ^/?([0-9]+)/products/key/?([0-9]+) index.php?route=extension/feed/rest_api/products&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/paymentmethod/?([0-9]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/paymentmethod&key=$3&store_id=$1&language_id=$2  [L]
+RewriteRule ^/?([0-9]+)/shippingmethod/key/?([0-9]+) index.php?route=extension/feed/rest_api/shippingmethod&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getCurrencies/key/?([0-9]+) index.php?route=extension/feed/rest_api/getCurrencies&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getSpecial/limit/?([0-9]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getSpecial&limit=$2&key=$3&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getLatest/limit/?([0-9]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getLatest&limit=$2&key=$3&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getFeature/limit/?([0-9]+)/mod_name/?([a-zA-Z0-9-\s]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getFeature&limit=$2&mod_name=$3&key=$4&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getBestseller/limit/?([0-9]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getBestseller&limit=$2&key=$3&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/addorder/key/?([0-9]+) index.php?route=extension/feed/rest_api/addorder&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/createorder/key/?([0-9]+) index.php?route=extension/feed/rest_api/createOrder&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/updatedPreferredLanguge/key/?([0-9]+) index.php?route=extension/feed/rest_api/updatedPreferredLanguge&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/updatedProductStatus/key/?([0-9]+) index.php?route=extension/feed/rest_api/updatedProductStatus&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/addCustomerGroup/key/?([0-9]+) index.php?route=extension/feed/rest_api/addCustomerGroup&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/deleteCustomerFromGroup/key/?([0-9]+) index.php?route=extension/feed/rest_api/deleteCustomerFromGroup&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/deleteCustomerGroup/key/?([0-9]+) index.php?route=extension/feed/rest_api/deleteCustomerGroup&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/updatedCustomerGroup/key/?([0-9]+) index.php?route=extension/feed/rest_api/updatedCustomerGroup&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getOrdersCountByCustomer/key/?([0-9]+) index.php?route=extension/feed/rest_api/getOrdersCountByCustomer&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getProductTotalSales/key/?([0-9]+) index.php?route=extension/feed/rest_api/getProductTotalSales&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getProductOptions/key/?([0-9]+) index.php?route=extension/feed/rest_api/getProductOptions&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/clearCart/key/?([0-9]+) index.php?route=extension/feed/rest_api/clearCart&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getLanguageByName/key/?([0-9]+) index.php?route=extension/feed/rest_api/getLanguageByName&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/searchOrder/key/?([0-9]+) index.php?route=extension/feed/rest_api/searchOrder&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/cartproduct/key/?([0-9]+) index.php?route=extension/feed/rest_api/cartproduct&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getCurrencyByCode/curr_code/?([a-zA-Z]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getCurrencyByCode&curr_code=$2&key=$3&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getCurrencies/key/?([0-9]+) index.php?route=extension/feed/rest_api/getCurrencies&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getSetting/code/?([a-zA-Z_]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getSetting&code=$2&key=$3&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getSettings/key/?([0-9]+) index.php?route=extension/feed/rest_api/getSettings&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getLanguages/key/?([0-9]+) index.php?route=extension/feed/rest_api/getLanguages&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getStoreLatLong/key/?([0-9]+) index.php?route=extension/feed/rest_api/getStoreLatLong&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/home/key/?([0-9]+) index.php?route=extension/feed/rest_api/home&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/AddCustomerToCustomerGroup/key/?([0-9]+) index.php?route=extension/feed/rest_api/AddCustomerToCustomerGroup&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/salesReport/key/?([0-9]+) index.php?route=extension/feed/rest_api/salesReport&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getOptions/key/?([0-9]+) index.php?route=extension/feed/rest_api/getOptions&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/addOption/key/?([0-9]+) index.php?route=extension/feed/rest_api/addOption&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/editOption/key/?([0-9]+) index.php?route=extension/feed/rest_api/editOption&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/addStore/key/?([0-9]+) index.php?route=extension/feed/rest_api/addStore&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getAllStores/key/?([0-9]+) index.php?route=extension/feed/rest_api/getAllStores&key=$2&store_id=$1  [L]
+
+
+RewriteRule ^/?([0-9]+)/deleteOption/key/?([0-9]+) index.php?route=extension/feed/rest_api/deleteOption&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getOptionValuebyid/key/?([0-9]+) index.php?route=extension/feed/rest_api/getOptionValuebyid&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/updateCustomer/key/?([0-9]+) index.php?route=extension/feed/rest_api/updateCustomer&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getCustomerGroups/key/?([0-9]+) index.php?route=extension/feed/rest_api/getCustomerGroups&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/updateOrderComments/key/?([0-9]+) index.php?route=extension/feed/rest_api/updateOrderComments&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/updateShippingProvider/key/?([0-9]+) index.php?route=extension/feed/rest_api/updateShippingProvider&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getLanguage/code/?([a-zA-Z_]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getLanguage&code=$2&key=$3&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getZone/zone_id/?([0-9]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getZone&zone_id=$2&key=$3&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getZonesByCountryId/country_id/?([0-9]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getZonesByCountryId&country_id=$2&key=$3&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getCountries/key/?([0-9]+) index.php?route=extension/feed/rest_api/getCountries&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/deleteaddress/key/?([0-9]+) index.php?route=extension/feed/rest_api/deleteaddress&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/editaddress/key/?([0-9]+) index.php?route=extension/feed/rest_api/editaddress&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/addaddress/key/?([0-9]+) index.php?route=extension/feed/rest_api/addaddress&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getaddress/key/?([0-9]+) index.php?route=extension/feed/rest_api/getaddress&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getaddressbyid/key/?([0-9]+) index.php?route=extension/feed/rest_api/getaddressbyid&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/editPassword/key/?([0-9]+) index.php?route=extension/feed/rest_api/editPassword&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/editCustomer/key/?([0-9]+) index.php?route=extension/feed/rest_api/editCustomer&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/register/key/?([0-9]+) index.php?route=extension/feed/rest_api/register&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/addproduct/key/?([0-9]+) index.php?route=extension/feed/rest_api/addProduct&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/uploadimage/key/?([0-9]+) index.php?route=extension/feed/rest_api/uploadImage&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/editProduct/key/?([0-9]+) index.php?route=extension/feed/rest_api/editProduct&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/deleteProduct/key/?([0-9]+) index.php?route=extension/feed/rest_api/deleteProduct&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/reorder/key/?([0-9]+) index.php?route=extension/feed/rest_api/reorder&key=$2&store_id=$1  [L]
+
+
+RewriteRule ^/?([0-9]+)/login/key/?([0-9]+) index.php?route=extension/feed/rest_api/login&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/autologin/key/?([0-9]+) index.php?route=extension/feed/rest_api/autologin&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getcustbymobile/key/?([0-9]+) index.php?route=extension/feed/rest_api/getCustomerByMobile&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getCustomerDetailsById/key/?([0-9]+) index.php?route=extension/feed/rest_api/getCustomerDetailsById&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/reports/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/reports&key=$2&store_id=$1&limit=$3&page=$4  [L]
+
+RewriteRule ^/?([0-9]+)/getCoupons/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/getCoupons&key=$2&store_id=$1&limit=$3&page=$4  [L]
+
+RewriteRule ^/?([0-9]+)/getActivCoupons/key/?([0-9]+) index.php?route=extension/feed/rest_api/getActivCoupons&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getBanners/key/?([0-9]+) index.php?route=extension/feed/rest_api/getBanners&key=$2&store_id=$1 [L]
+
+RewriteRule ^/?([0-9]+)/addPromotion/key/?([0-9]+) index.php?route=extension/feed/rest_api/addPromotion&key=$2&store_id=$1 [L]
+
+RewriteRule ^/?([0-9]+)/addRating/key/?([0-9]+) index.php?route=extension/feed/rest_api/addRating&key=$2&store_id=$1 [L]
+
+
+RewriteRule ^/?([0-9]+)/editRating/key/?([0-9]+) index.php?route=extension/feed/rest_api/editRating&key=$2&store_id=$1 [L]
+
+
+RewriteRule ^/?([0-9]+)/getRatings/key/?([0-9]+) index.php?route=extension/feed/rest_api/getRatings&key=$2&store_id=$1[L]
+
+RewriteRule ^/?([0-9]+)/updateOrderRatingComments/key/?([0-9]+) index.php?route=extension/feed/rest_api/updateOrderRatingComments&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getRatingsByNumber/key/?([0-9]+) index.php?route=extension/feed/rest_api/getRatingsByNumber&key=$2&store_id=$1[L]
+
+
+RewriteRule ^/?([0-9]+)/getOrderRatingById/key/?([0-9]+) index.php?route=extension/feed/rest_api/getOrderRatingById&key=$2&store_id=$1[L]
+
+RewriteRule ^/?([0-9]+)/updateMerchantRatingComments/key/?([0-9]+) index.php?route=extension/feed/rest_api/updateMerchantRatingComments&key=$2&store_id=$1[L]
+
+RewriteRule ^/?([0-9]+)/updateDeliveryRating/key/?([0-9]+) index.php?route=extension/feed/rest_api/updateDeliveryRating&key=$2&store_id=$1[L]
+
+RewriteRule ^/?([0-9]+)/updateCartItems/key/?([0-9]+) index.php?route=extension/feed/rest_api/updateCartItems&key=$2&store_id=$1  [L]
+
+
+RewriteRule ^/?([0-9]+)/addCoupon/key/?([0-9]+) index.php?route=extension/feed/rest_api/addCoupon&key=$2&store_id=$1 [L]
+RewriteRule ^/?([0-9]+)/editCoupon/key/?([0-9]+) index.php?route=extension/feed/rest_api/editCoupon&key=$2&store_id=$1 [L]
+RewriteRule ^/?([0-9]+)/deleteCoupon/key/?([0-9]+) index.php?route=extension/feed/rest_api/deleteCoupon&key=$2&store_id=$1 [L]
+RewriteRule ^/?([0-9]+)/getCouponById/key/?([0-9]+) index.php?route=extension/feed/rest_api/getCouponById&key=$2&store_id=$1 [L]
+RewriteRule ^/?([0-9]+)/applyCoupon/key/?([0-9]+) index.php?route=extension/feed/rest_api/applyCoupon&key=$2&store_id=$1 [L]
+
+RewriteRule ^/?([0-9]+)/getCustomersFromGroups/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/getCustomersFromGroups&key=$2&store_id=$1&limit=$3&page=$4  [L]
+
+RewriteRule ^/?([0-9]+)/getmanufacture/key/?([0-9]+) index.php?route=extension/feed/rest_api/getmanufacture&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getbannerbyname/bannername/?([A-Za-zA-Z0-9-\s]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getbannerbyname&bannername=$2&key=$3&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getchildCategories/cate_id/?([0-9]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getchildCategories&cate_id=$2&key=$3&store_id=$1  [L]
+
+
+RewriteRule ^/?([0-9]+)/getCategories/?([0-9]+)/key/?([0-9]+)/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/getCategories&language_id=$2&key=$3&store_id=$1&limit=$4&page=$5&status=$6  [L]
+
+
+RewriteRule ^/?([0-9]+)/gettotalbyid/key/?([0-9]+) index.php?route=extension/feed/rest_api/gettotalbyid&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getorderproduct/key/?([0-9]+) index.php?route=extension/feed/rest_api/getorderproduct&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getCustomers/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/getCustomers&key=$2&store_id=$1&limit=$3&page=$4  [L]
+
+RewriteRule ^/?([0-9]+)/getCustomersListCsv/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/getCustomersListCsv&key=$2&store_id=$1&limit=$3&page=$4  [L]
+
+RewriteRule ^/?([0-9]+)/ordersListCsv/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/ordersListCsv&key=$2&store_id=$1&limit=$3&page=$4  [L]
+
+
+RewriteRule ^/?([0-9]+)/getCustomersByPage/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/getCustomersByPage&key=$2&store_id=$1&limit=$3&page=$4  [L]
+
+RewriteRule ^/?([0-9]+)/getCategoriesByPage/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/getCategoriesByPage&key=$2&store_id=$1&limit=$3&page=$4  [L]
+
+RewriteRule ^/?([0-9]+)/ValidateLocation/key/?([0-9]+) index.php?route=extension/feed/rest_api/ValidateLocation&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getOrdersByMerchant/key/?([0-9]+) index.php?route=extension/feed/rest_api/getOrdersByMerchant&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getProductIdsByPosId/key/?([0-9]+) index.php?route=extension/feed/rest_api/getProductIdsByPosId&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/ValidateLocationserviceable/key/?([0-9]+) index.php?route=extension/feed/rest_api/ValidateLocationserviceable&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getorderbyid/key/?([0-9]+) index.php?route=extension/feed/rest_api/getorderbyid&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getinvoicebyid/key/?([0-9]+) index.php?route=extension/feed/rest_api/getInvoice&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getOrderRatings/key/?([0-9]+) index.php?route=extension/feed/rest_api/getOrderRatings&key=$2&store_id=$1&limit=$3&page=$4  [L]
+
+RewriteRule ^/?([0-9]+)/addPromotion/key/?([0-9]+) index.php?route=extension/feed/rest_api/addPromotion&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/editPromotion/key/?([0-9]+) index.php?route=extension/feed/rest_api/editPromotion&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getorderbycus/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/getorderbycus&key=$2&store_id=$1&limit=$3&offset=$4 [L]
+RewriteRule ^/?([0-9]+)/getProdadditional/p_id/?([0-9]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getProdadditional&p_id=$2&key=$3&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getOptionbyid/p_id/?([0-9]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getOptionbyid&p_id=$2&key=$3&store_id=$1  [L]
+
+
+RewriteRule ^(.+)/searchproduct/seakeyword/?([A-Za-z-\s]+)/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/searchproduct&seakeyword=$2&key=$3&store_id=$1&limit=$4&page=$5  [L]
+
+RewriteRule ^(.+)/searchproductStore/seakeyword/?([A-Za-z-\s]+)/key/?([0-9]+)/?([0-9]+)/?([0-9]+) index.php?route=extension/feed/rest_api/searchproductStore&seakeyword=$2&key=$3&store_id=$1&limit=$4&page=$5  [B,L]
+RewriteRule ^/?([0-9]+)/getProduct/p_id/?([0-9]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getProduct&p_id=$2&key=$3&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/forgotten/key/?([0-9]+) index.php?route=extension/feed/rest_api/forgotten&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/wishlist/key/?([0-9]+) index.php?route=extension/feed/rest_api/wishlist&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/addcart/key/?([0-9]+) index.php?route=extension/feed/rest_api/addcart&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/addtocart/key/?([0-9]+) index.php?route=extension/feed/rest_api/addtocart&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/addmultipletocart/key/?([0-9]+) index.php?route=extension/feed/rest_api/addmultipletocart&key=$2&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/getOrderByDeliveryOrderId/delivery_order_id/?([a-zA-Z0-9\-]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getOrderByDeliveryOrderId&delivery_order_id=$2&key=$3&store_id=$1
+RewriteRule ^/?([0-9]+)/removecart/key/?([0-9]+) index.php?route=extension/feed/rest_api/removecart&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getrelaProduct/p_id/?([0-9]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/getrelaProduct&p_id=$2&key=$3&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/taxclassapi/tax_class_id/?([0-9]+)/key/?([0-9]+) index.php?route=extension/feed/rest_api/taxclassapi&tax_class_id=$2&key=$3&store_id=$1  [L]
+
+RewriteRule ^/?([0-9]+)/success/key/?([0-9]+) index.php?route=extension/feed/rest_api/success&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/failure/key/?([0-9]+) index.php?route=extension/feed/rest_api/failure&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/productreturn/key/?([0-9]+) index.php?route=extension/feed/rest_api/productreturn&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/returnlist/key/?([0-9]+) index.php?route=extension/feed/rest_api/returnlist&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/returnbyid/key/?([0-9]+) index.php?route=extension/feed/rest_api/returnbyid&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/getorderstatuses/key/?([0-9]+) index.php?route=extension/feed/rest_api/getOrderStatuses&key=$2&store_id=$1  [L]
+RewriteRule ^/?([0-9]+)/updateorderstatus/key/?([0-9]+) index.php?route=extension/feed/rest_api/updateOrderStatus&key=$2&store_id=$1  [L]
+
